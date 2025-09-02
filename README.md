@@ -21,7 +21,7 @@ It provides a unified way to connect to multiple payment rails, third-party inte
 
 ```bash
 # Clone the repo
-git clone https://github.com/your-username/finx.git
+git clone https://github.com/bajoski34/finx.git
 
 cd finx
 
