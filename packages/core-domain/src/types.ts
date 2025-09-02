@@ -182,6 +182,13 @@ export interface Fee {
   value: number;
 }
 
+export interface VirtualAccountRouting {
+  virtualAccountId: string;
+  merchantId: string;
+  currency: string;
+  providerId: string; // preferred provider for this VA
+}
+
 // ==========================
 // API Response Wrapper
 // ==========================
@@ -217,9 +224,11 @@ export interface MultiRailTransaction {
   destinationAccountId: string;
   amount: number;
   currency: string;
-  rails: string[]; // list of provider IDs or methods used
+  rails: string[]; // providers used
+  fees?: Fee[];
   status: TransactionStatus;
   metadata?: Record<string, any>;
+  fallbackAttempts?: number;
   createdAt: string;
   updatedAt: string;
 }
