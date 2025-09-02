@@ -1,5 +1,7 @@
 # Finx
 
+![Logo](art/logo.png)
+
 🚀 **Finx** is a modular and extensible fintech framework that helps developers rapidly build fintech platforms.  
 It provides a unified way to connect to multiple payment rails, third-party integrations, and financial services.  
 
