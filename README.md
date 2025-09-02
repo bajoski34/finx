@@ -25,3 +25,24 @@ cd finx
 
 # Install dependencies (example with Node.js)
 npm install
+```
+---
+
+## Usage
+```javascript
+import { Finx } from "finx";
+
+// Initialize with config
+const finx = new Finx({
+  provider: "flutterwave",
+  apiKey: process.env.API_KEY
+});
+
+// Example: Create a payment
+await finx.payments.create({
+  amount: 5000,
+  currency: "NGN",
+  customer: { email: "jane@example.com" }
+});
+```
+
