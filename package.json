@@ -3,10 +3,35 @@
   "version": "0.1.0",
   "description": "A modular and extensible fintech framework that helps developers rapidly build fintech platforms. Supports multiple payment rails, integrations, and extensions out of the box.",
   "scripts": {
+    "build": "nx run-many -t build",
+    "test": "nx run-many -t test",
+    "lint": "nx run-many -t lint",
+    "dev": "nx run-many -t serve --parallel",
     "insight": "top -l 1 | grep \"CPU usage\""
   },
-  "keywords": [],
+  "keywords": ["fintech", "payments", "framework", "rail-adapters", "nx"],
   "author": "",
   "license": "ISC",
-  "packageManager": "pnpm@10.13.1"
+  "packageManager": "pnpm@10.13.1",
+  "devDependencies": {
+    "@nx/js": "21.4.1",
+    "@nx/node": "21.4.1",
+    "@nx/nest": "21.4.1",
+    "@nx/eslint": "21.4.1",
+    "@nx/jest": "21.4.1",
+    "@typescript-eslint/eslint-plugin": "^8.0.0",
+    "@typescript-eslint/parser": "^8.0.0",
+    "eslint": "^9.0.0",
+    "jest": "^29.7.0",
+    "typescript": "^5.6.0",
+    "ts-node": "^10.9.0"
+  },
+  "dependencies": {
+    "tslib": "^2.7.0",
+    "fastify": "^4.28.0",
+    "@fastify/cors": "^9.0.0",
+    "@fastify/helmet": "^11.1.0",
+    "@fastify/rate-limit": "^9.1.0",
+    "commander": "^12.0.0"
+  }
 }

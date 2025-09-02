@@ -1,0 +1,33 @@
+{
+  "name": "idempotency",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "packages/idempotency/src",
+  "projectType": "library",
+  "tags": ["scope:packages", "type:core"],
+  "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/packages/idempotency",
+        "tsConfig": "packages/idempotency/tsconfig.lib.json",
+        "main": "packages/idempotency/src/index.ts"
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["packages/idempotency/**/*.ts"]
+      }
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "packages/idempotency/jest.config.ts",
+        "passWithNoTests": true
+      }
+    }
+  }
+}

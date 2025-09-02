@@ -1,0 +1,16 @@
+{
+  "name": "@finx/cli",
+  "version": "0.1.0",
+  "description": "Fintech framework CLI for managing adapters and development",
+  "main": "dist/main.js",
+  "bin": {
+    "finx": "dist/main.js"
+  },
+  "scripts": {
+    "build": "nx build cli",
+    "start": "node dist/main.js"
+  },
+  "dependencies": {
+    "commander": "^12.0.0"
+  }
+}

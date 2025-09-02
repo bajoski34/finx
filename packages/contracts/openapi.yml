@@ -1,0 +1,154 @@
+openapi: 3.0.3
+info:
+  title: Finx API
+  description: Open fintech framework API for payments, payouts, and financial services
+  version: 0.1.0
+  contact:
+    name: Finx Team
+    url: https://github.com/bajoski34/finx
+  license:
+    name: ISC
+    url: https://opensource.org/licenses/ISC
+
+servers:
+  - url: http://localhost:3000
+    description: Development server
+  - url: https://api.finx.dev
+    description: Production server
+
+paths:
+  /health:
+    get:
+      summary: Health check
+      operationId: healthCheck
+      responses:
+        '200':
+          description: Service health status
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HealthResponse'
+
+  /api/v1/payment-intents:
+    post:
+      summary: Create payment intent
+      operationId: createPaymentIntent
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreatePaymentIntentRequest'
+      responses:
+        '201':
+          description: Payment intent created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaymentIntent'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+components:
+  schemas:
+    HealthResponse:
+      type: object
+      required: [status, service, version]
+      properties:
+        status:
+          type: string
+          enum: [ok, error]
+        service:
+          type: string
+        version:
+          type: string
+        environment:
+          type: string
+
+    PaymentIntent:
+      type: object
+      required: [id, amount, currency, status, customer]
+      properties:
+        id:
+          type: string
+          format: uuid
+        amount:
+          type: integer
+          minimum: 1
+          description: Amount in minor units (e.g., cents)
+        currency:
+          type: string
+          pattern: '^[A-Z]{3}$'
+          example: 'NGN'
+        status:
+          type: string
+          enum: [requires_method, processing, succeeded, failed, canceled]
+        capture:
+          type: boolean
+          default: true
+        customer:
+          $ref: '#/components/schemas/Customer'
+        metadata:
+          type: object
+          additionalProperties: true
+        created_at:
+          type: string
+          format: date-time
+
+    Customer:
+      type: object
+      required: [email]
+      properties:
+        id:
+          type: string
+        email:
+          type: string
+          format: email
+        name:
+          type: string
+        phone:
+          type: string
+
+    CreatePaymentIntentRequest:
+      type: object
+      required: [amount, currency, customer]
+      properties:
+        amount:
+          type: integer
+          minimum: 1
+        currency:
+          type: string
+          pattern: '^[A-Z]{3}$'
+        customer:
+          $ref: '#/components/schemas/Customer'
+        capture:
+          type: boolean
+          default: true
+        metadata:
+          type: object
+          additionalProperties: true
+
+    ErrorResponse:
+      type: object
+      required: [error, message]
+      properties:
+        error:
+          type: string
+        message:
+          type: string
+        details:
+          type: object
+          additionalProperties: true
+
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+
+security:
+  - BearerAuth: []
