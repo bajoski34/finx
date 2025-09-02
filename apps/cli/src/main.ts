@@ -1,14 +1,13 @@
 #!/usr/bin/env node
 
 import { Command } from 'commander';
-import { version } from '../package.json';
 
 const program = new Command();
 
 program
   .name('finx')
   .description('Fintech framework CLI for managing adapters, sandbox, and development')
-  .version(version);
+  .version('0.1.0');
 
 // Adapter commands
 const adapterCmd = program

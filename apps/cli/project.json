@@ -6,12 +6,12 @@
   "tags": ["scope:apps", "type:cli"],
   "targets": {
     "build": {
-      "executor": "@nx/node:build",
+      "executor": "@nx/js:tsc",
       "outputs": ["{options.outputPath}"],
       "options": {
         "outputPath": "dist/apps/cli",
         "main": "apps/cli/src/main.ts",
-        "tsConfig": "apps/cli/tsconfig.app.json"
+        "tsConfig": "apps/cli/tsconfig.lib.json"
       }
     },
     "lint": {

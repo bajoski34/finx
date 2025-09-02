@@ -6,25 +6,12 @@
   "tags": ["scope:apps", "type:app"],
   "targets": {
     "build": {
-      "executor": "@nx/node:build",
+      "executor": "@nx/js:tsc",
       "outputs": ["{options.outputPath}"],
       "options": {
         "outputPath": "dist/apps/api-gateway",
         "main": "apps/api-gateway/src/main.ts",
-        "tsConfig": "apps/api-gateway/tsconfig.app.json"
-      },
-      "configurations": {
-        "production": {
-          "optimization": true,
-          "extractLicenses": true,
-          "inspect": false,
-          "fileReplacements": [
-            {
-              "replace": "apps/api-gateway/src/environments/environment.ts",
-              "with": "apps/api-gateway/src/environments/environment.prod.ts"
-            }
-          ]
-        }
+        "tsConfig": "apps/api-gateway/tsconfig.lib.json"
       }
     },
     "serve": {
