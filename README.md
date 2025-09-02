@@ -38,7 +38,7 @@ const finx = new Finx({
   apiKey: process.env.API_KEY
 });
 
-// Example: Create a payment
+// Example: Create a payment.
 await finx.payments.create({
   amount: 5000,
   currency: "NGN",
