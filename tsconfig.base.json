@@ -1,0 +1,31 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "rootDir": ".",
+    "sourceMap": true,
+    "declaration": false,
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "importHelpers": true,
+    "target": "ES2022",
+    "module": "esnext",
+    "lib": ["ES2022", "dom"],
+    "skipLibCheck": true,
+    "skipDefaultLibCheck": true,
+    "baseUrl": ".",
+    "paths": {
+      "@finx/contracts": ["packages/contracts/src/index.ts"],
+      "@finx/core-domain": ["packages/core-domain/src/index.ts"],
+      "@finx/orchestration": ["packages/orchestration/src/index.ts"],
+      "@finx/ledger": ["packages/ledger/src/index.ts"],
+      "@finx/adapters": ["packages/adapter/src/index.ts"],
+      "@finx/plugins": ["packages/plugins/src/index.ts"],
+      "@finx/telemetry": ["packages/telemetry/src/index.ts"],
+      "@finx/storage": ["packages/storage/src/index.ts"],
+      "@finx/laravel-adapter": ["packages/laravel-adapter/src/index.ts"],
+      "@finx/idempotency": ["packages/idempotency/src/index.ts"]
+    }
+  },
+  "exclude": ["node_modules", "tmp"]
+}

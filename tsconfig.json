@@ -1,0 +1,46 @@
+{
+  "extends": "./tsconfig.base.json",
+  "files": [],
+  "include": [],
+  "references": [
+    {
+      "path": "./apps/api-gateway"
+    },
+    {
+      "path": "./apps/cli"
+    },
+    {
+      "path": "./apps/control-center"
+    },
+    {
+      "path": "./packages/contracts"
+    },
+    {
+      "path": "./packages/core-domain"
+    },
+    {
+      "path": "./packages/orchestration"
+    },
+    {
+      "path": "./packages/ledger"
+    },
+    {
+      "path": "./packages/adapter"
+    },
+    {
+      "path": "./packages/plugins"
+    },
+    {
+      "path": "./packages/telemetry"
+    },
+    {
+      "path": "./packages/storage"
+    },
+    {
+      "path": "./packages/laravel-adapter"
+    },
+    {
+      "path": "./packages/idempotency"
+    }
+  ]
+}

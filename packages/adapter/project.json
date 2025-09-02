@@ -1,0 +1,33 @@
+{
+  "name": "adapter",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "packages/adapter/src",
+  "projectType": "library",
+  "tags": ["scope:packages", "type:adapters"],
+  "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/packages/adapter",
+        "tsConfig": "packages/adapter/tsconfig.lib.json",
+        "main": "packages/adapter/src/index.ts"
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["packages/adapter/**/*.ts"]
+      }
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "packages/adapter/jest.config.ts",
+        "passWithNoTests": true
+      }
+    }
+  }
+}
