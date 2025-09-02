@@ -1,0 +1,28 @@
+{
+  "name": "@rails/flutterwave",
+  "key": "flutterwave",
+  "version": "1.0.0",
+  "capabilities": {
+    "rails": ["card","bank_transfer","mobile_money"],
+    "currencies": ["NGN","USD","GBP","KES"]
+  },
+  "configSchema": {
+    "type": "object",
+    "required": {
+      "v3": ["publicKey","secretKey"],
+      "v4": ["clientId","clientSecret"]
+    },
+    "properties": {
+      "v3": {
+        "publicKey": {"type":"string"},
+        "secretKey": {"type":"string"},
+        "mode": {"type":"string","enum":["test","live"]}
+      },
+      "v4": {
+        "clientId": {"type":"string"},
+        "clientSecret": {"type":"string"},
+        "mode": {"type":"string","enum":["development","production"]}
+      }
+    }
+  }
+}

@@ -232,3 +232,77 @@ export interface MultiRailTransaction {
   createdAt: string;
   updatedAt: string;
 }
+
+export type RailCapabilities = {
+    rails: ("card"|"bank_transfer"|"open_banking"|"mobile_money"|"wallet")[];
+    currencies: string[];
+    countries: string[];
+    features: string[]; // 3DS2, mandate, tokenization, payouts, refunds
+};
+
+export type ProviderIntentRef = {
+    id: string;
+    providerId: string;
+    status: 'pending'|'completed'|'failed';
+    createdAt: string;
+    updatedAt: string;
+}
+
+export type RefundRef = {
+    id: string;
+    transactionId: string;
+    amount: number;
+}
+
+export type PayoutRef = {
+    id: string;
+    transactionId: string;
+}
+
+export type VARef = {
+    id: string;
+    virtualAccountId: string;
+    status: VirtualAccountStatus;
+    createdAt: string;
+    updatedAt: string;
+}
+
+export type CoreEvent = {
+    type: string;
+    data: any;
+}
+
+export type PaymentIntent = {
+    amount: number;
+    currency: string;
+    description?: string;
+    metadata?: Record<string, any>;
+}
+
+export type PayoutRequest = {
+    amount: number;
+    currency: string;
+}
+
+export type VARequest = {
+    name: string;
+}
+
+export interface RailAdapter {
+    key: string; // e.g. "flutterwave", "paystack"
+    health(): Promise<{ status: 'up'|'down'; latencyMs: number }>;
+    capabilities(): Promise<RailCapabilities>;
+    // Collections
+    createPaymentIntent(pi: PaymentIntent): Promise<ProviderIntentRef>;
+    confirmPaymentIntent(id: string, data?: any): Promise<ProviderIntentRef>;
+    refund(paymentId: string, amountMinor?: number): Promise<RefundRef>;
+    // Payouts
+    createPayout(tx: PayoutRequest): Promise<PayoutRef>;
+    getPayout(id: string): Promise<PayoutRef>;
+    // Virtual Accounts
+    createVA(req: VARequest): Promise<VARef>;
+    closeVA(id: string): Promise<void>;
+// Webhooks
+    verifyWebhook(sigHeader: string, payload: string): boolean;
+    mapWebhook(event: any): CoreEvent; // normalise → core event
+}

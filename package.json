@@ -1,0 +1,12 @@
+{
+  "name": "finx",
+  "version": "0.1.0",
+  "description": "A modular and extensible fintech framework that helps developers rapidly build fintech platforms. Supports multiple payment rails, integrations, and extensions out of the box.",
+  "scripts": {
+    "insight": "top -l 1 | grep \"CPU usage\""
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "packageManager": "pnpm@10.13.1"
+}
