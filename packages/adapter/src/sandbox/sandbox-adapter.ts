@@ -18,11 +18,11 @@ import {
 export class SandboxAdapter implements RailAdapter {
   key = 'sandbox';
 
-  private mockDelay = 1000; // 1 second delay to simulate API calls
+  private mockDelay = 1000; // 1 second delay to simulate API calls.
 
   async health(): Promise<{ status: 'up' | 'down'; latencyMs: number }> {
     const start = Date.now();
-    // Simulate network call
+    // Simulate network call.
     await new Promise(resolve => setTimeout(resolve, 100));
     return {
       status: 'up',

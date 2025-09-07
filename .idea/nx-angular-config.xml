@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="NxAngularConfigService" workspaceLocation="file://$PROJECT_DIR$/nx.json">
+    <projects>
+      <project name="adapter" file="file://$PROJECT_DIR$/packages/adapter/project.json" />
+      <project name="api-gateway" file="file://$PROJECT_DIR$/apps/api-gateway/project.json" />
+      <project name="cli" file="file://$PROJECT_DIR$/apps/cli/project.json" />
+      <project name="contracts" file="file://$PROJECT_DIR$/packages/contracts/project.json" />
+      <project name="idempotency" file="file://$PROJECT_DIR$/packages/idempotency/project.json" />
+      <project name="telemetry" file="file://$PROJECT_DIR$/packages/telemetry/project.json" />
+    </projects>
+  </component>
+</project>

@@ -19,11 +19,21 @@ export interface PaymentIntent {
   created_at: string;
 }
 
+export interface Address {
+    line1: string;
+    line2?: string;
+    city: string;
+    state: string;
+    country: string;
+    postal_code: string;
+}
+
 export interface Customer {
   id?: string;
   email: string;
   name?: string;
   phone?: string;
+  address?: Address;
 }
 
 export interface CreatePaymentIntentRequest {
