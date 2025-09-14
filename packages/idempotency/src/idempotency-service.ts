@@ -3,7 +3,7 @@
  * Hash(method+path+body+org) → store lock + response for 24h
  */
 
-import crypto from 'crypto';
+import * as crypto from "node:crypto";
 import { IdempotencyKey, IdempotencyRecord, IdempotencyResponse, IdempotencyConfig } from './types';
 
 export class IdempotencyService {
