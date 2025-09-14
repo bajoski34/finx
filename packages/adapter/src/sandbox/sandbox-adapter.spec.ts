@@ -5,6 +5,7 @@ describe('SandboxAdapter', () => {
 
   beforeEach(() => {
     adapter = new SandboxAdapter();
+    adapter.setMockDelay(10); // Set a short delay for tests
   });
 
   it('should be created with correct key', () => {

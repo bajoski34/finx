@@ -1,0 +1,8 @@
+{
+  "name": "telemetry",
+  "version": "0.0.1",
+  "types": "./src/index.d.ts",
+  "module": "./src/index.js",
+  "type": "module",
+  "main": "./src/index.js"
+}

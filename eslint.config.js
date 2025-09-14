@@ -1,35 +1,63 @@
-const { FlatCompat } = require('@eslint/eslintrc');
 const js = require('@eslint/js');
-const { fixupConfigRules } = require('@eslint/compat');
-
-const compat = new FlatCompat({
-  baseDirectory: __dirname,
-  recommendedConfig: js.configs.recommended,
-});
 
 module.exports = [
   { ignores: ['**/dist', '**/coverage', '**/node_modules'] },
-  ...fixupConfigRules(
-    compat.extends(
-      '@nx/typescript',
-      '@nx/javascript',
-    )
-  ),
+  js.configs.recommended,
   {
-    files: ['**/*.ts', '**/*.tsx', '**/*.js', '**/*.jsx'],
+    files: ['**/*.ts', '**/*.tsx'],
+    languageOptions: {
+      parser: require('@typescript-eslint/parser'),
+      parserOptions: {
+        ecmaVersion: 'latest',
+        sourceType: 'module'
+      },
+      globals: {
+        ...require('globals').node
+      }
+    },
+    plugins: {
+      '@typescript-eslint': require('@typescript-eslint/eslint-plugin')
+    },
     rules: {
-      '@typescript-eslint/no-explicit-any': 'warn',
+      'no-unused-vars': 'off',
       '@typescript-eslint/no-unused-vars': ['error', { argsIgnorePattern: '^_' }],
       'prefer-const': 'error',
       'no-var': 'error',
     },
   },
   {
-    files: ['**/*.ts', '**/*.tsx'],
-    rules: {},
+    files: ['**/*.spec.ts', '**/*.test.ts'],
+    languageOptions: {
+      parser: require('@typescript-eslint/parser'),
+      parserOptions: {
+        ecmaVersion: 'latest',
+        sourceType: 'module'
+      },
+      globals: {
+        ...require('globals').node,
+        ...require('globals').jest
+      }
+    },
+    plugins: {
+      '@typescript-eslint': require('@typescript-eslint/eslint-plugin')
+    },
+    rules: {
+      'no-unused-vars': 'off',
+      '@typescript-eslint/no-unused-vars': ['error', { argsIgnorePattern: '^_' }],
+      'prefer-const': 'error',
+      'no-var': 'error',
+    },
   },
   {
     files: ['**/*.js', '**/*.jsx'],
-    rules: {},
+    languageOptions: {
+      globals: {
+        ...require('globals').node
+      }
+    },
+    rules: {
+      'prefer-const': 'error',
+      'no-var': 'error',
+    },
   },
 ];
