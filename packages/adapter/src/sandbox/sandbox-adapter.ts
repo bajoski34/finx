@@ -55,7 +55,7 @@ export class SandboxAdapter implements RailAdapter {
     };
   }
 
-  async confirmPaymentIntent(id: string, data?: any): Promise<ProviderIntentRef> {
+  async confirmPaymentIntent(id: string, _data?: any): Promise<ProviderIntentRef> {
     await this.delay();
     
     // Simulate 3DS flow or OTP confirmation
@@ -80,7 +80,7 @@ export class SandboxAdapter implements RailAdapter {
     };
   }
 
-  async createPayout(tx: PayoutRequest): Promise<PayoutRef> {
+  async createPayout(_tx: PayoutRequest): Promise<PayoutRef> {
     await this.delay();
     
     return {
@@ -98,7 +98,7 @@ export class SandboxAdapter implements RailAdapter {
     };
   }
 
-  async createVA(req: VARequest): Promise<VARef> {
+  async createVA(_req: VARequest): Promise<VARef> {
     await this.delay();
     
     return {
@@ -110,12 +110,12 @@ export class SandboxAdapter implements RailAdapter {
     };
   }
 
-  async closeVA(id: string): Promise<void> {
+  async closeVA(_id: string): Promise<void> {
     await this.delay();
     // Sandbox VA closed
   }
 
-  verifyWebhook(sigHeader: string, payload: string): boolean {
+  verifyWebhook(_sigHeader: string, _payload: string): boolean {
     // In sandbox mode, all webhooks are considered valid
     return true;
   }

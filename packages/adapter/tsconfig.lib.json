@@ -5,6 +5,6 @@
     "declaration": true,
     "types": []
   },
-  "include": ["src/**/*"],
+  "include": ["src/**/*", "../core-domain/src/**/*"],
   "exclude": ["jest.config.ts", "src/**/*.spec.ts", "src/**/*.test.ts"]
 }

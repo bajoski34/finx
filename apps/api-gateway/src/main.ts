@@ -37,7 +37,7 @@ async function bootstrap() {
     await app.listen({ port, host: '0.0.0.0' });
     console.log(`🚀 API Gateway running on port ${port}`);
   } catch (err) {
-    app.log.error(err);
+    (app.log as any).error(err);
     process.exit(1);
   }
 }

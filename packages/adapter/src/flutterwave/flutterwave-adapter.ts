@@ -39,7 +39,7 @@ export class FlutterwaveAdapter implements RailAdapter {
         return flutterwaveManifest.capabilities as RailCapabilities;
     }
 
-    async createPaymentIntent(pi: PaymentIntent): Promise<ProviderIntentRef> {
+    async createPaymentIntent(_pi: PaymentIntent): Promise<ProviderIntentRef> {
 
 
         return {
@@ -51,7 +51,7 @@ export class FlutterwaveAdapter implements RailAdapter {
         };
     }
 
-    async confirmPaymentIntent(id: string, data?: any): Promise<ProviderIntentRef> {
+    async confirmPaymentIntent(id: string, _data?: any): Promise<ProviderIntentRef> {
 
 
 
@@ -73,7 +73,7 @@ export class FlutterwaveAdapter implements RailAdapter {
         };
     }
 
-    async createPayout(tx: PayoutRequest): Promise<PayoutRef> {
+    async createPayout(_tx: PayoutRequest): Promise<PayoutRef> {
 
         return {
             id: `sandbox_po_${Date.now()}`,
@@ -89,7 +89,7 @@ export class FlutterwaveAdapter implements RailAdapter {
         };
     }
 
-    async createVA(req: VARequest): Promise<VARef> {
+    async createVA(_req: VARequest): Promise<VARef> {
 
         return {
             id: `sandbox_va_${Date.now()}`,
@@ -100,11 +100,11 @@ export class FlutterwaveAdapter implements RailAdapter {
         };
     }
 
-    async closeVA(id: string): Promise<void> {
+    async closeVA(_id: string): Promise<void> {
         // Sandbox VA closed
     }
 
-    verifyWebhook(sigHeader: string, payload: string): boolean {
+    verifyWebhook(_sigHeader: string, _payload: string): boolean {
         // In sandbox mode, all webhooks are considered valid
         return true;
     }
